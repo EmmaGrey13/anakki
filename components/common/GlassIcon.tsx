@@ -1,7 +1,13 @@
 // components/common/GlassIcon.tsx
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import React, { useRef } from 'react';
-import { Animated, Pressable, StyleSheet, ViewStyle } from 'react-native';
+import {
+  AccessibilityProps,
+  Animated,
+  Pressable,
+  StyleSheet,
+  ViewStyle
+} from 'react-native';
 
 // 🔥 Exported so any screen can match wrapper height perfectly
 export const ICON_WRAPPER_SIZE = 38;
@@ -12,6 +18,11 @@ type Props = {
   color?: string;
   onPress?: () => void;
   style?: ViewStyle;
+  // ✨ NEW: Accessibility props
+  accessibilityLabel?: string;
+  accessibilityRole?: AccessibilityProps['accessibilityRole'];
+  accessibilityHint?: string;
+  accessibilityState?: AccessibilityProps['accessibilityState'];
 };
 
 export default function GlassIcon({
@@ -20,6 +31,10 @@ export default function GlassIcon({
   color = '#FFFFFF',
   onPress,
   style,
+  accessibilityLabel,
+  accessibilityRole = 'button', // ⬅️ Default to 'button' for pressable icons
+  accessibilityHint,
+  accessibilityState,
 }: Props) {
   const scale = useRef(new Animated.Value(1)).current;
   const glow = useRef(new Animated.Value(0)).current;
@@ -60,6 +75,12 @@ export default function GlassIcon({
         onPressOut={pressOut}
         style={styles.wrapper}
         hitSlop={10}
+        // ✨ NEW: Accessibility props
+        accessibilityLabel={accessibilityLabel}
+        accessibilityRole={accessibilityRole}
+        accessibilityHint={accessibilityHint}
+        accessibilityState={accessibilityState}
+        accessible={true}
       >
         {/* Glow */}
         <Animated.View
