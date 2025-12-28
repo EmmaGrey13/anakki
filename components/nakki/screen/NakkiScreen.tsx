@@ -44,7 +44,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import CosmicBackground from '../../../components/backgrounds/CosmicBackground';
 import GlassIcon, { ICON_WRAPPER_SIZE } from '../../../components/common/GlassIcon';
-import TypingIndicator from '../../../components/nakki/TypingIndicator';
+import TypingIndicator from '../../../components/ui/TypingIndicator';
 import { useConversations } from '../../../layout/ConversationContext';
 import { useDrawer } from '../../../layout/DrawerContext';
 import { TextStyles } from '../../../styles/textStyles';
